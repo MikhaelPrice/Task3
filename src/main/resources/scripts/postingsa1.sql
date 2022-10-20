@@ -23,3 +23,8 @@ TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.postingsa1
     OWNER to postgres;
+
+UPDATE postingsa1
+SET auth_posting = loginsa1.is_active
+FROM loginsa1
+WHERE loginsa1.app_account_name like postingsa1.user_name;
